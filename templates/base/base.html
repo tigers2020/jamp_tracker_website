@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - Jamps Tracker System</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#64748b',
+                        success: '#22c55e',
+                        danger: '#ef4444',
+                        warning: '#f59e0b',
+                        info: '#06b6d4',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <nav class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="{% url 'animation:home' %}" class="text-xl font-bold text-primary">Jamps Tracker System</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="{% url 'animation:home' %}" class="text-gray-600 hover:text-primary">Home</a>
+                    <a href="{% url 'animation:documentation' %}" class="text-gray-600 hover:text-primary">Documentation</a>
+                    <a href="{% url 'animation:underconstruction' %}" class="text-gray-600 hover:text-primary">Animation</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="{% url 'animation:home' %}" class="text-gray-600 hover:text-primary">Home</a>
+                    <a href="{% url 'animation:documentation' %}" class="text-gray-600 hover:text-primary">Documentation</a>
+                    <a href="{% url 'animation:underconstruction' %}" class="text-gray-600 hover:text-primary">Animation</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About</h3>
+                    <p class="text-gray-400">Jamps Tracker System for professional tennis match analysis and ball tracking.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'animation:home' %}" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="{% url 'animation:documentation' %}" class="text-gray-400 hover:text-white">Documentation</a></li>
+                        <li><a href="{% url 'animation:underconstruction' %}" class="text-gray-400 hover:text-white">Animation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>RIT College of Engineering Technology</li>
+                        <li>15 Lomb Memorial Drive</li>
+                        <li>Rochester, NY 14623</li>
+                        <li>Tel: 585-475-5955</li>
+                        <li>Email: cet@rit.edu</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2024 Jamps Tracker System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 

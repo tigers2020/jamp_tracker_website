@@ -1,0 +1,104 @@
+{% extends 'base/base.html' %}
+
+{% block title %}분석 - 테니스 볼 애니메이션 시스템{% endblock %}
+
+{% block content %}
+<div class="jumbotron bg-light p-4 rounded mb-4">
+    <h1 class="display-4">테니스 볼 분석 시스템</h1>
+    <p class="lead">
+        이 시스템은 테니스 볼 애니메이션을 분석하고 FPGA를 통해 인/아웃 판정을 수행합니다.
+    </p>
+    <hr class="my-4">
+    <p>
+        애니메이션을 선택하여 FPGA 분석을 시작하거나, 코트 라인 및 카메라 위치를 관리할 수 있습니다.
+    </p>
+    <div class="mt-4">
+        <a href="{% url 'analysis:court_lines' %}" class="btn btn-primary btn-lg me-2">
+            <i class="bi bi-rulers"></i> 코트 라인 관리
+        </a>
+        <a href="{% url 'analysis:camera_positions' %}" class="btn btn-success btn-lg">
+            <i class="bi bi-camera"></i> 카메라 위치 관리
+        </a>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">분석할 애니메이션 선택</h5>
+            </div>
+            <div class="card-body">
+                {% if animation_types %}
+                <div class="row">
+                    {% for animation in animation_types %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ animation.name }}</h5>
+                                <p class="card-text">{{ animation.description|truncatechars:100 }}</p>
+                                <a href="{% url 'analysis:fpga_analysis' animation.id %}" class="btn btn-primary">분석하기</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="alert alert-warning">
+                    <p>등록된 애니메이션이 없습니다.</p>
+                    <a href="{% url 'animation:upload_coordinates' %}" class="btn btn-primary mt-2">좌표 데이터 업로드하기</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if results %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">최근 분석 결과</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>애니메이션</th>
+                                <th>판정</th>
+                                <th>신뢰도</th>
+                                <th>분석일</th>
+                                <th>상세</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for result in results %}
+                            <tr>
+                                <td>{{ result.animation_type.name }}</td>
+                                <td>
+                                    {% if result.judgment == 'IN' %}
+                                    <span class="badge bg-success">인</span>
+                                    {% elif result.judgment == 'OUT' %}
+                                    <span class="badge bg-danger">아웃</span>
+                                    {% else %}
+                                    <span class="badge bg-secondary">불확실</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ result.confidence|floatformat:2 }}</td>
+                                <td>{{ result.created_at|date:"Y-m-d H:i" }}</td>
+                                <td>
+                                    <a href="{% url 'analysis:result_detail' result.id %}" class="btn btn-sm btn-primary">상세</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %} 

@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Under Construction - Tennis Ball Animation System{% endblock %}
+
+{% block content %}
+<div class="min-h-[80vh] flex items-center justify-center bg-gray-50">
+    <div class="text-center px-4">
+        <div class="mb-8">
+            <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                 alt="Tennis Court Under Construction" 
+                 class="mx-auto rounded-lg shadow-lg w-full max-w-md">
+        </div>
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">Under Construction</h1>
+        <p class="text-xl text-gray-600 mb-8">We're working hard to improve the Animation System.<br>Please check back soon!</p>
+        <div class="space-y-4">
+            <div class="flex items-center justify-center space-x-2 text-gray-600">
+                <svg class="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Estimated completion: Coming Soon</span>
+            </div>
+            <a href="{% url 'animation:home' %}" class="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                Return to Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

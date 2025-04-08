@@ -1,0 +1,109 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Documentation - Tennis Ball Animation System{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+        <!-- Documentation Header -->
+        <div class="mb-12 text-center">
+            <h1 class="text-4xl font-bold mb-4">System Documentation</h1>
+            <p class="text-xl text-gray-600">Comprehensive guide to the Tennis Ball Animation System</p>
+        </div>
+
+        <!-- Documentation Content -->
+        <div class="space-y-12">
+            <!-- System Overview -->
+            <section>
+                <h2 class="section-title">System Overview</h2>
+                <div class="prose max-w-none mt-6">
+                    <p>The Tennis Ball Animation System is a comprehensive solution for tracking and analyzing tennis ball movements during matches. It combines real-time animation capabilities with FPGA-based analysis for accurate in/out judgments.</p>
+                </div>
+            </section>
+
+            <!-- Key Components -->
+            <section>
+                <h2 class="section-title">Key Components</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                    <!-- Animation Engine -->
+                    <div class="feature-card">
+                        <h3 class="text-xl font-semibold mb-3">Animation Engine</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Real-time ball movement rendering</li>
+                            <li>• Customizable playback speed</li>
+                            <li>• Frame-by-frame analysis capability</li>
+                            <li>• Support for multiple camera angles</li>
+                        </ul>
+                    </div>
+
+                    <!-- Data Processing -->
+                    <div class="feature-card">
+                        <h3 class="text-xl font-semibold mb-3">Data Processing</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• DAT file format support</li>
+                            <li>• Coordinate system conversion</li>
+                            <li>• Data sampling and filtering</li>
+                            <li>• Error correction algorithms</li>
+                        </ul>
+                    </div>
+
+                    <!-- FPGA Integration -->
+                    <div class="feature-card">
+                        <h3 class="text-xl font-semibold mb-3">FPGA Integration</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Hardware-accelerated processing</li>
+                            <li>• Real-time in/out detection</li>
+                            <li>• Court line recognition</li>
+                            <li>• Camera calibration support</li>
+                        </ul>
+                    </div>
+
+                    <!-- User Interface -->
+                    <div class="feature-card">
+                        <h3 class="text-xl font-semibold mb-3">User Interface</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Intuitive control panel</li>
+                            <li>• Real-time visualization</li>
+                            <li>• Data export capabilities</li>
+                            <li>• Customizable display options</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technical Specifications -->
+            <section>
+                <h2 class="section-title">Technical Specifications</h2>
+                <div class="mt-6 bg-white rounded-lg shadow-md overflow-hidden">
+                    <table class="min-w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Component</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Specification</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Frame Rate</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">60 FPS (Fixed)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Animation Speed</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1-3000 FPS adjustable</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Data Format</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">DAT, JSON</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">FPGA Model</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Xilinx Artix-7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %} 
